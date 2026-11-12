@@ -1,0 +1,59 @@
+# Umair Sadiq
+
+> WordPress developer and SEO specialist from Gujrat, Pakistan, working remotely with clients worldwide. Available 9 AM – 2 AM Pakistan time. 100+ websites built: custom WordPress plugins and themes, WooCommerce stores, Next.js and React apps, and Flutter mobile apps, with technical SEO built in from day one.
+
+## Contact
+- Website: https://umairsadiq.com/
+- Email: hello@umairsadiq.com
+- Phone / WhatsApp: +92 324 4604162
+- LinkedIn: https://www.linkedin.com/in/umair-sadiq-a24011359/
+- GitHub: https://github.com/umair2248
+- CV (PDF): https://umairsadiq.com/cv/umair-sadiq-cv.pdf
+
+## Pages
+- Services: https://umairsadiq.com/services/
+- WordPress development: https://umairsadiq.com/services/wordpress-development/
+- SEO services: https://umairsadiq.com/services/seo-services/
+- WooCommerce development: https://umairsadiq.com/services/woocommerce-development/
+- WordPress speed optimization: https://umairsadiq.com/services/wordpress-speed-optimization/
+- Next.js & React development: https://umairsadiq.com/services/nextjs-react-development/
+- Flutter app development: https://umairsadiq.com/services/flutter-app-development/
+- Case studies: https://umairsadiq.com/work/
+- About: https://umairsadiq.com/about/
+- Contact: https://umairsadiq.com/contact/
+
+## Services
+- WordPress development: custom plugins, custom themes, Gutenberg blocks, WooCommerce, Elementor, ACF
+- SEO: technical and on-page SEO, keyword research, audits, Core Web Vitals, schema markup (Ahrefs, Semrush, Rank Math, Yoast, Screaming Frog, Google Search Console, GA4)
+- Website speed: WP Rocket, NitroPack, LiteSpeed Cache
+- Next.js and React websites and web apps
+- PHP backends and APIs; Python and FastAPI
+- Flutter apps for Android and iOS
+
+## Experience
+- WordPress Developer, ABCDMEDIA LTD (https://abcdmedia.co.uk/) (Jan 2026 – present, remote, international clients)
+- WordPress Developer & SEO, Technogic Systems (https://technogicsystems.com/) (Aug 2025 – Apr 2026, Gujrat), including a 6-month SEO & WordPress internship (1 Sep 2025 – 28 Feb 2026)
+
+## Selected work
+- Doctors Hospital Gujrat (https://doctorshospitalgujrat.com/) [delivered via Visiventro agency]: WordPress + SEO. Google Search Console, 6 Oct – 7 Nov 2026: 578 clicks, 17K impressions, average position 6.6.
+- Jankowski Import Auto (https://jankowskiimportautoinc.com/) [delivered via Revenue Pulses agency]: WordPress + SEO. Last 28 days vs previous 28 (to 7 Nov 2026): clicks +137% (30 → 71), impressions +238%, average position 13.6 → 9.6.
+- PalBreedHub (https://palbreedhub.com/): Next.js, SEO-first. 1.6K impressions in its first days (29 Oct – 7 Nov 2026).
+- Mic Testing Tool (https://mictestingtool.com/): React.
+- AUJ Wear (https://aujwear.pk/) [delivered via Visiventro agency]: WooCommerce store for a Pakistani streetwear brand (oversized tees).
+- Cooking Nations (https://cookingnations.com/): WordPress recipe blog and shop (Elementor, WooCommerce, Rank Math).
+- Visiventro (https://visiventro.com/): WordPress.
+- MDN Express AB (https://mdnexpressab.com/) [delivered via Revenue Pulses agency]: WordPress.
+
+## Education
+- BS Information Technology, University of Gujrat (https://uog.edu.pk/) (2023 – 2027)
+- ICS Computer Science, Punjab College Jalalpur Jattan (https://pgc.edu/) (2019 – 2021)
+
+## Certifications (with public verification)
+- SEO & WordPress Development Internship, Technogic Systems, Feb 2026: https://umairsadiq.com/certificates/technogic-internship-letter.pdf
+- SEO (Search Engine Optimization), DigiSkills.pk, Dec 2025: verify at https://digiskills.pk/verify, ID 684FVXEMK
+- Freelancing, DigiSkills.pk, Dec 2025: verify at https://digiskills.pk/verify, ID KFUHSTQMK
+- Advanced Styling with Responsive Design, University of Michigan (Coursera), Jun 2025: https://coursera.org/verify/Q8XZMLPKWYT2
+- Interactivity with JavaScript, University of Michigan (Coursera), Jun 2025: https://coursera.org/verify/DCXASE1VEO0T
+- Introduction to CSS3, University of Michigan (Coursera), Jun 2025: https://coursera.org/verify/DHN9M30ITY7W
+- Introduction to HTML5, University of Michigan (Coursera), Jun 2025: https://coursera.org/verify/1QR7F3VBO1IB
+- Introduction to Cybersecurity Essentials, IBM (Coursera), Apr 2025: https://coursera.org/verify/JZKKIF4AHDJ2

@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.DS_Store
+.env.deploy
+*.zip
+
+# Browser profile used to print the CV
+.cv-browser-profile/
+
+# Old static site kept locally only
+_old-site-backup/

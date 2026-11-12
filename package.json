@@ -1,0 +1,29 @@
+{
+  "name": "umair-sadiq-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node --preserve-symlinks --preserve-symlinks-main node_modules/next/dist/bin/next dev --webpack",
+    "build": "node --preserve-symlinks --preserve-symlinks-main node_modules/next/dist/bin/next build --webpack",
+    "typecheck": "tsc --noEmit",
+    "deploy": "npm run build && npm run cv && node scripts/deploy.mjs",
+    "deploy:only": "node scripts/deploy.mjs",
+    "preview": "python -m http.server 3000 --directory out",
+    "cv": "node scripts/make-cv.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "typescript": "^6.0.3"
+  }
+}
