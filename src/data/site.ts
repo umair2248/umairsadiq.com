@@ -41,6 +41,19 @@ export const contact = {
   cvPage: "/cv/",
 };
 
+/**
+ * Trustpilot. Paste the IDs from Trustpilot Business → Integrations → TrustBox
+ * (copy each widget's code: data-businessunit-id and data-template-id).
+ * Leave them empty to show a plain "Review me on Trustpilot" link instead.
+ * Add the rating widget's template only once there are a few reviews.
+ */
+export const trustpilot = {
+  profileUrl: "https://www.trustpilot.com/review/umairsadiq.com",
+  businessUnitId: "",
+  collectorTemplateId: "",
+  ratingTemplateId: "",
+};
+
 export function isPlaceholder(value: string) {
   return /example\.com|your-|0000000|wa\.me\/0+$/.test(value);
 }

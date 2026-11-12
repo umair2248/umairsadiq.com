@@ -1,4 +1,5 @@
 import { landingPages } from "@/data/all-pages";
+import { TrustpilotWidget } from "./Trustpilot";
 import { homeFaqs, homeSeo, recruiter } from "@/data/home";
 import { caseStudies, services } from "@/data/pages";
 import { contact, projects } from "@/data/site";
@@ -105,6 +106,7 @@ export function HomeResults() {
         <h2 id="home-results-title" className="section-title fx-title" data-scroll="through">
           Real Search Console numbers, <span className="muted">not promises.</span>
         </h2>
+          <TrustpilotWidget kind="rating" className="home-tp" />
         <p className="home-lead reveal">
           An expert WordPress developer should be able to show results, not just screenshots of designs. These numbers come
           straight from my clients&rsquo; Google Search Console accounts, with the dates they cover.

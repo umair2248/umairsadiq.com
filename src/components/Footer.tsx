@@ -1,4 +1,5 @@
 import { landingPages } from "@/data/all-pages";
+import { TrustpilotWidget } from "./Trustpilot";
 import { services } from "@/data/pages";
 import { contact, navLinks, profile, tools } from "@/data/site";
 import { CookieSettingsButton } from "./CookieConsent";
@@ -53,6 +54,7 @@ export function Footer() {
                 </span>
               </li>
             </ul>
+            <TrustpilotWidget className="footer__tp" />
             <ul className="footer__socials" role="list">
               {socials.map(({ label, href, Icon }) => (
                 <li key={label}>

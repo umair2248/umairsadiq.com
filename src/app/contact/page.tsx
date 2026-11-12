@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ogImage } from "@/data/seo";
 import { CopyEmail } from "@/components/CopyEmail";
+import { TrustpilotWidget } from "@/components/Trustpilot";
 import { HireButton } from "@/components/HireButton";
 import { ArrowRight, ArrowUpRight, Download, GitHub, LinkedIn, Mail, MapPin, Phone, WhatsApp } from "@/components/Icons";
 import { FaqList, JsonLd, PageHero, breadcrumbLd, faqLd } from "@/components/PageParts";
@@ -92,6 +93,7 @@ export default function ContactPage() {
                 <span>Gujrat, Punjab, Pakistan · Remote worldwide</span>
               </li>
             </ul>
+            <TrustpilotWidget className="contact-page__tp" />
             <p className="footer__label">Working hours</p>
             <p className="contact-page__hours">
               <WorkingHours />

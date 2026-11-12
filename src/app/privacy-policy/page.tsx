@@ -70,6 +70,13 @@ export default function PrivacyPage() {
               &ldquo;googtrans&rdquo; so every page stays in that language. Pick English to switch it off and remove the cookie.
             </p>
 
+            <h2>Trustpilot</h2>
+            <p>
+              Reviews are collected and shown through Trustpilot. The Trustpilot widget loads from Trustpilot&rsquo;s
+              servers only when it scrolls into view, and leaving a review happens on Trustpilot&rsquo;s own site under
+              their privacy policy.
+            </p>
+
             <h2>Chat assistant</h2>
             <p>
               The chat assistant on this site runs entirely in your browser. It answers from the information on this
