@@ -7567,3 +7567,372 @@ html.is-translating :is(.notranslate, .term, .browser, .lang) :is(p, li, h1, h2,
 .svc-pricing {
   margin-top: 28px;
 }
+
+/* ===== Technical SEO audit page ===== */
+.svc-checklist {
+  display: grid;
+  gap: 12px;
+  margin-top: 36px;
+}
+@media (min-width: 700px) {
+  .svc-checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1100px) {
+  .svc-checklist {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.svc-checklist > li {
+  position: relative;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color 0.3s, transform 0.4s var(--ease);
+}
+.svc-checklist > li:hover {
+  border-color: color-mix(in srgb, var(--c) 55%, transparent);
+  transform: translateY(-4px);
+}
+.svc-checklist__num {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--c) 70%, var(--text));
+}
+.svc-checklist h3 {
+  margin-top: 6px;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+}
+.svc-checklist ul {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.svc-checklist ul li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.svc-checklist ul svg {
+  flex: none;
+  margin-top: 4px;
+  color: color-mix(in srgb, var(--c) 70%, var(--text));
+}
+
+/* Sample audit report */
+.svc-audit {
+  margin-top: 36px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.9);
+}
+.svc-audit__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+@media (min-width: 900px) {
+  .svc-audit__stats {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+.svc-audit__stats li {
+  display: grid;
+  gap: 4px;
+  padding: 20px;
+  background: var(--surface);
+}
+.svc-audit__stats strong {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.svc-audit__stats .is-good strong {
+  color: #4ade80;
+}
+.svc-audit__stats .is-warn strong {
+  color: #fbbf24;
+}
+.svc-audit__stats span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.svc-audit__findings li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 24px;
+  border-top: 1px solid var(--line);
+}
+.svc-audit__level {
+  flex: none;
+  min-width: 70px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  text-align: center;
+}
+.svc-audit__level.is-high {
+  background: rgba(239, 68, 68, 0.18);
+  color: #f87171;
+}
+.svc-audit__level.is-medium {
+  background: rgba(251, 191, 36, 0.18);
+  color: #fbbf24;
+}
+.svc-audit__level.is-low {
+  background: rgba(96, 165, 250, 0.18);
+  color: #60a5fa;
+}
+.svc-audit__level.is-passed {
+  background: rgba(74, 222, 128, 0.16);
+  color: #4ade80;
+}
+.svc-audit__findings p {
+  font-size: 0.95rem;
+}
+
+/* Warning to ticket */
+.svc-ticket {
+  display: grid;
+  gap: 18px;
+  align-items: center;
+  margin-top: 36px;
+}
+@media (min-width: 1000px) {
+  .svc-ticket {
+    grid-template-columns: minmax(0, 0.8fr) auto minmax(0, 1.6fr);
+  }
+}
+.svc-ticket__tool {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+.svc-ticket__tool span {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.svc-ticket__tool code {
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+  color: #fbbf24;
+}
+.svc-ticket__arrow {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0b0b0e;
+}
+@media (max-width: 999px) {
+  .svc-ticket__arrow svg {
+    transform: rotate(90deg);
+  }
+}
+.svc-ticket__card {
+  display: grid;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--c) 45%, var(--line));
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--c) 14%, transparent), transparent 70%),
+    var(--surface);
+}
+.svc-ticket__card div {
+  display: grid;
+  gap: 4px 20px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.svc-ticket__card div:last-child {
+  border-bottom: 0;
+}
+@media (min-width: 640px) {
+  .svc-ticket__card div {
+    grid-template-columns: 130px 1fr;
+  }
+}
+.svc-ticket__card dt {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--c) 70%, var(--text));
+}
+.svc-ticket__card dd {
+  margin: 0;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+/* Impact x effort matrix */
+.svc-matrix {
+  position: relative;
+  margin-top: 36px;
+  padding: 0 0 28px 28px;
+}
+.svc-matrix ul {
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 760px) {
+  .svc-matrix ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.svc-matrix__cell {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.svc-matrix__cell.is-0 {
+  border-color: color-mix(in srgb, var(--accent-fg) 55%, transparent);
+  background:
+    radial-gradient(80% 80% at 0% 0%, color-mix(in srgb, var(--accent-fg) 16%, transparent), transparent 70%),
+    var(--surface);
+}
+.svc-matrix__cell.is-1 {
+  border-color: color-mix(in srgb, var(--c) 50%, transparent);
+}
+.svc-matrix__cell.is-3 {
+  opacity: 0.75;
+}
+.svc-matrix__sub {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.svc-matrix__cell h3 {
+  margin-top: 6px;
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.svc-matrix__cell.is-0 h3 {
+  color: var(--accent-fg);
+}
+.svc-matrix__cell p:last-child {
+  margin-top: 8px;
+  color: var(--muted);
+}
+.svc-matrix__y,
+.svc-matrix__x {
+  position: absolute;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.svc-matrix__y {
+  left: 14px;
+  bottom: 40px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+}
+.svc-matrix__x {
+  left: 28px;
+  bottom: 0;
+}
+
+/* Packages */
+.svc-packages {
+  display: grid;
+  gap: 16px;
+  margin-top: 36px;
+  align-items: stretch;
+}
+@media (min-width: 960px) {
+  .svc-packages {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.svc-package {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+.svc-package.is-featured {
+  border-color: color-mix(in srgb, var(--accent-fg) 60%, transparent);
+  background:
+    radial-gradient(90% 60% at 100% 0%, color-mix(in srgb, var(--accent-fg) 14%, transparent), transparent 70%),
+    var(--surface);
+  box-shadow: 0 30px 80px -40px color-mix(in srgb, var(--accent-fg) 40%, transparent);
+}
+.svc-package__badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #0b0b0e;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+.svc-package h3 {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+.svc-package__size {
+  margin-top: 4px;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--c) 70%, var(--text));
+}
+.svc-package__fit {
+  margin-top: 8px;
+  color: var(--muted);
+}
+.svc-package__price {
+  margin: 18px 0;
+  padding: 12px 0;
+  border-block: 1px solid var(--line);
+  font-weight: 700;
+}
+.svc-package ul {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.svc-package ul li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.95rem;
+}
+.svc-package ul svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--accent-fg);
+}
+.svc-package__btn {
+  margin-top: auto;
+  justify-content: center;
+}

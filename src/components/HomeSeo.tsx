@@ -45,7 +45,8 @@ export function HomeServices() {
           Most clients come to me for one of six things, and the most common is to{" "}
           <a href="/services/wordpress-development/" className="text-link">hire a WordPress developer</a> for a new build, a
           redesign or a fix. You can also{" "}
-          <a href="/services/seo-services/" className="text-link">hire an SEO expert</a>,{" "}
+          <a href="/services/seo-services/" className="text-link">hire an SEO expert</a>, order a{" "}
+          <a href="/services/technical-seo-audit/" className="text-link">technical SEO audit</a>,{" "}
           <a href="/services/woocommerce-development/" className="text-link">hire a WooCommerce developer</a>, get{" "}
           <a href="/services/wordpress-speed-optimization/" className="text-link">WordPress speed optimization</a>,{" "}
           <a href="/services/nextjs-react-development/" className="text-link">hire a freelance React developer</a> or{" "}

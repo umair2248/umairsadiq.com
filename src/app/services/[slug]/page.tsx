@@ -79,7 +79,7 @@ function SectionBlock({ sec, color }: { sec: Section; color: string }) {
               </p>
               {it.href ? (
                 <a href={it.href} className="related__more">
-                  See the project <ArrowRight width={14} height={14} />
+                  {it.linkLabel ?? "See the project"} <ArrowRight width={14} height={14} />
                 </a>
               ) : null}
             </li>
@@ -299,6 +299,118 @@ function SectionBlock({ sec, color }: { sec: Section; color: string }) {
           </div>
         </div>
       );
+    case "checklist":
+      return (
+        <ol className="svc-checklist" role="list">
+          {b.items.map((it, i) => (
+            <li key={it.title} className="fx-rise" data-scroll="through">
+              <span className="svc-checklist__num">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{it.title}</h3>
+              <ul role="list">
+                {it.points.map((pt) => (
+                  <li key={pt}>
+                    <Check width={14} height={14} /> {pt}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      );
+    case "audit":
+      return (
+        <div className="svc-audit fx-rise" data-scroll="through">
+          <div className="svc-report__head">
+            <p className="svc-report__brand">
+              <span className="wordmark__mark" aria-hidden="true">
+                {profile.initials}
+              </span>{" "}
+              Technical SEO audit · {b.site}
+            </p>
+            <p className="svc-report__period">{b.date}</p>
+          </div>
+          <ul className="svc-audit__stats" role="list">
+            {b.stats.map((st) => (
+              <li key={st.label} className={`is-${st.tone}`}>
+                <strong>{st.value}</strong>
+                <span>{st.label}</span>
+              </li>
+            ))}
+          </ul>
+          <ul className="svc-audit__findings" role="list">
+            {b.findings.map((f) => (
+              <li key={f.text}>
+                <span className={`svc-audit__level is-${f.level.toLowerCase()}`}>{f.level}</span>
+                <p>{f.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "ticket":
+      return (
+        <div className="svc-ticket fx-rise" data-scroll="through">
+          <div className="svc-ticket__tool">
+            <span>Tool warning</span>
+            <code>Page Titles: Over 60 Characters (6)</code>
+          </div>
+          <span className="svc-ticket__arrow" aria-hidden="true">
+            <ArrowRight width={22} height={22} />
+          </span>
+          <dl className="svc-ticket__card">
+            {b.rows.map((r) => (
+              <div key={r.label}>
+                <dt>{r.label}</dt>
+                <dd>{r.text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      );
+    case "matrix":
+      return (
+        <div className="svc-matrix fx-rise" data-scroll="through">
+          <span className="svc-matrix__y" aria-hidden="true">
+            Impact →
+          </span>
+          <span className="svc-matrix__x" aria-hidden="true">
+            Effort →
+          </span>
+          <ul role="list">
+            {b.cells.map((cell, i) => (
+              <li key={cell.title} className={`svc-matrix__cell is-${i}`}>
+                <p className="svc-matrix__sub">{cell.sub}</p>
+                <h3>{cell.title}</h3>
+                <p>{cell.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "packages":
+      return (
+        <ul className="svc-packages" role="list">
+          {b.items.map((pk) => (
+            <li key={pk.name} className={`svc-package fx-rise${pk.featured ? " is-featured" : ""}`} data-scroll="through">
+              {pk.featured ? <span className="svc-package__badge">Most popular</span> : null}
+              <h3>{pk.name}</h3>
+              <p className="svc-package__size">{pk.size}</p>
+              <p className="svc-package__fit">{pk.fit}</p>
+              <p className="svc-package__price">{pk.price ?? "Fixed price, quoted in 24 hours"}</p>
+              <ul role="list">
+                {pk.points.map((pt) => (
+                  <li key={pt}>
+                    <Check width={16} height={16} /> {pt}
+                  </li>
+                ))}
+              </ul>
+              <HireButton className={`btn ${pk.featured ? "btn--accent" : "btn--ghost"} svc-package__btn`}>
+                Order {pk.name.toLowerCase()} audit <ArrowRight width={16} height={16} />
+              </HireButton>
+            </li>
+          ))}
+        </ul>
+      );
     case "pricing":
       return (
         <div className="home-pricing svc-pricing">
@@ -376,9 +488,14 @@ export default async function ServicePage({ params }: Props) {
             hasOfferCatalog: {
               "@type": "OfferCatalog",
               name: s.name,
-              itemListElement: s.deliverables.map((d) => ({
+              itemListElement: (pg?.offers ?? s.deliverables.map((d) => ({ name: d.title, description: d.text }))).map((o) => ({
                 "@type": "Offer",
-                itemOffered: { "@type": "Service", name: d.title, description: d.text },
+                name: o.name,
+                description: o.description,
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                seller: { "@id": `${profile.siteUrl}/#person` },
+                itemOffered: { "@type": "Service", name: o.name, description: o.description },
               })),
             },
           },

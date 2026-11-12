@@ -6,7 +6,7 @@
 import type { Faq } from "./pages";
 import { tools, type Tool } from "./site";
 
-export type Item = { title: string; text: string; href?: string };
+export type Item = { title: string; text: string; href?: string; linkLabel?: string };
 
 export type Block =
   | { kind: "cards"; items: Item[]; cols?: 2 | 3 | 4 }
@@ -19,7 +19,18 @@ export type Block =
   | { kind: "belt"; tools: Tool[] }
   | { kind: "metrics"; items: { name: string; short: string; good: string; text: string }[] }
   | { kind: "report"; period: string; rows: { label: string; before: string; after: string; change: string; note?: string }[]; covers: string[] }
-  | { kind: "pricing"; text: string; items: Item[] };
+  | { kind: "pricing"; text: string; items: Item[] }
+  | { kind: "checklist"; items: { title: string; points: string[] }[] }
+  | {
+      kind: "audit";
+      site: string;
+      date: string;
+      stats: { label: string; value: string; tone: "good" | "warn" | "neutral" }[];
+      findings: { level: "High" | "Medium" | "Low" | "Passed"; text: string }[];
+    }
+  | { kind: "ticket"; rows: { label: string; text: string }[] }
+  | { kind: "matrix"; cells: { title: string; sub: string; text: string }[] }
+  | { kind: "packages"; items: { name: string; size: string; fit: string; points: string[]; featured?: boolean; price?: string }[] };
 
 export type Section = {
   id: string;
@@ -52,6 +63,8 @@ export type ServicePage = {
   faqs: Faq[];
   final: { title: string; muted: string; text: string };
   updated: string;
+  /** Fixed packages, used for Offer schema */
+  offers?: { name: string; description: string }[];
 };
 
 const pricingNote =
@@ -98,7 +111,7 @@ export const servicePages: Record<string, ServicePage> = {
           kind: "cards",
           cols: 3,
           items: [
-            { title: "Technical SEO audit", text: "A full crawl with Screaming Frog, checked against Search Console: indexing, crawl errors, redirects, canonicals, duplicate pages, Core Web Vitals and structured data. You get a prioritized list, and I can fix every item myself." },
+            { title: "Technical SEO audit", text: "A full crawl with Screaming Frog, checked against Search Console: indexing, crawl errors, redirects, canonicals, duplicate pages, Core Web Vitals and structured data. You get a prioritized list, and I can fix every item myself.", href: "/services/technical-seo-audit/", linkLabel: "See technical SEO audit services" },
             { title: "On-page SEO", text: "Titles, meta descriptions, headings, internal links and copy reworked around real search demand, page by page, without keyword stuffing." },
             { title: "Local SEO", text: "Google Business Profile, location pages, local schema and consistent business details across directories. If you need to hire a local SEO expert for a city or region, this is where most quick wins are." },
             { title: "Ecommerce SEO", text: "Category and product structure, product schema, filters that don't create thousands of duplicate URLs, and crawl budget for [WooCommerce stores](/services/woocommerce-development/)." },
@@ -523,7 +536,7 @@ export const servicePages: Record<string, ServicePage> = {
             { title: "After report", time: "Day 6–7", text: "The same tests again, side by side, plus a Search Console check after 28 days." },
           ],
         },
-        note: "Need new pages or a rebuild too? See [WordPress development](/services/wordpress-development/). Speed is also part of a full [technical SEO audit](/services/seo-services/).",
+        note: "Need new pages or a rebuild too? See [WordPress development](/services/wordpress-development/). Speed is also part of every [technical SEO audit](/services/technical-seo-audit/).",
       },
       {
         id: "pricing",
@@ -842,5 +855,260 @@ export const servicePages: Record<string, ServicePage> = {
       { q: "Will you maintain the app after launch?", a: "Yes. Monthly support covers updates for new Android and iOS versions, bug fixes and small features." },
     ],
     final: { title: "Planning an app?", muted: "Get an estimate.", text: "Tell me what the app should do. You'll get a plan, a timeline and a fixed estimate in USD within 24 hours." },
+  },
+  /* ─────────────────────────── Technical SEO audit ─────────────────────────── */
+  "technical-seo-audit": {
+    metaTitle: "Technical SEO Audit Services | Fixed-Price Audit in 5 Days",
+    metaDescription:
+      "Technical SEO audit services with a clear fix list: crawl errors, indexing, Core Web Vitals, schema and internal links. Fixed price, delivered in 5 days.",
+    h1: "Technical SEO Audit Services With a Fix List You Can Act On",
+    lead: "My SEO technical audit services find what stops Google from crawling, indexing and ranking your site, then turn it into a fix list your developer (or I) can work through. Fixed price, delivered in 5 working days. I'm Umair Sadiq, a technical SEO expert and WordPress developer.",
+    intro: [
+      "Most SEO audits are a 90-page export from a tool, sorted by warning colors, and nobody acts on them. A crawler can tell you 400 images are missing alt text. It can't tell you that one canonical tag is quietly removing your best service page from Google, or that a single line in robots.txt blocks every filter page in your store. Deciding what actually matters is the audit.",
+      "I run the crawl, check it against your own Search Console data, and test the pages that make you money by hand. Every issue in the report says what's wrong, where, why it matters and exactly how to fix it, ranked by impact and effort. Because I'm also a developer, I can fix everything on the list for you if you want.",
+    ],
+    heroPoints: ["Fixed price, delivered in 5 working days", "Crawl + Search Console + manual checks", "Fix list ranked by impact and effort", "Optional: I fix it for you"],
+    cta: "Order your audit",
+    formTitle: "Order a technical SEO audit",
+    formSub: "Fixed price quoted within 24 hours. Not ready yet? Choose the free mini audit instead.",
+    types: ["Technical SEO audit", "Free mini SEO audit", "Audit + fixes", "Audit before a site migration", "Store or large site audit", "Something else"],
+    midAfter: 3,
+    updated: "2026-11-12",
+    offers: [
+      { name: "Small site technical SEO audit", description: "Up to 50 URLs. All 12 audit areas, prioritized fix list and crawl data, delivered in 5 working days." },
+      { name: "Business site technical SEO audit", description: "Up to 500 URLs. All 12 areas plus internal linking and content-duplication review and a walkthrough call, delivered in 5 working days." },
+      { name: "Store and large site technical SEO audit", description: "500+ URLs or ecommerce. Adds faceted navigation, product schema and crawl budget analysis." },
+    ],
+    sections: [
+      {
+        id: "covers",
+        nav: "What it covers",
+        eyebrow: "What the audit covers",
+        title: "What my technical SEO audit services cover:",
+        muted: "12 areas, every time.",
+        lead: "Every audit checks the same 12 areas, so nothing depends on what a tool happens to flag. Each one is checked against your Search Console data, not just a crawl.",
+        block: {
+          kind: "checklist",
+          items: [
+            { title: "Crawling and access", points: ["robots.txt rules", "Blocked CSS and JavaScript", "Server errors and timeouts", "How deep key pages sit"] },
+            { title: "Indexing", points: ["Pages in Google vs pages that should be", "noindex tags and headers", "“Crawled, not indexed” pages", "Soft 404s"] },
+            { title: "Duplicates and canonicals", points: ["Canonicals pointing the wrong way", "HTTP/HTTPS and www versions", "Parameter and filter URLs", "Thin or duplicate pages"] },
+            { title: "Redirects and status codes", points: ["Redirect chains and loops", "404s that still get links or traffic", "302s that should be 301s", "Internal links to redirects"] },
+            { title: "Site structure and internal links", points: ["Orphan pages", "Clicks from the home page", "Anchor text", "Links into your money pages"] },
+            { title: "Core Web Vitals and speed", points: ["LCP, INP and CLS from real users", "Slow templates", "Heavy images, scripts and fonts", "Server response time"] },
+            { title: "Mobile rendering", points: ["Mobile layout and tap targets", "Content hidden on mobile", "Viewport and font sizes"] },
+            { title: "JavaScript and rendering", points: ["Content that needs JavaScript to appear", "Links Google can't follow", "Rendered vs source HTML"] },
+            { title: "Structured data", points: ["Schema present and valid", "Errors in Search Console enhancement reports", "Missing schema on key templates"] },
+            { title: "Titles, descriptions and headings", points: ["Missing, duplicate or cut-off titles", "Meta descriptions", "One H1 per page and heading order"] },
+            { title: "Sitemaps and international", points: ["XML sitemap matches indexable pages", "Sitemap in robots.txt and Search Console", "hreflang for multi-language sites"] },
+            { title: "AI search readiness", points: ["AI crawlers allowed or blocked on purpose", "Business and person schema", "Clear answers AI tools can quote", "llms.txt"] },
+          ],
+        },
+      },
+      {
+        id: "sample",
+        nav: "Sample audit",
+        eyebrow: "Sample audit",
+        title: "A real audit summary,",
+        muted: "from my own site.",
+        lead: "This is the summary of a technical audit I ran on umairsadiq.com on 12 November 2026. Same checks you'd get, and yes, it found problems on my own site.",
+        block: {
+          kind: "audit",
+          site: "umairsadiq.com",
+          date: "Crawled 12 Nov 2026 · 22 indexable URLs from the XML sitemap",
+          stats: [
+            { label: "Pages crawled", value: "22", tone: "neutral" },
+            { label: "Non-200 pages", value: "0", tone: "good" },
+            { label: "Broken internal links", value: "0", tone: "good" },
+            { label: "Correct canonicals", value: "22/22", tone: "good" },
+            { label: "Titles over 60 characters", value: "6", tone: "warn" },
+            { label: "Largest HTML page", value: "361 KB", tone: "warn" },
+          ],
+          findings: [
+            { level: "Medium", text: "6 titles are over 60 characters and may be cut off in Google: three service pages and three case studies." },
+            { level: "Low", text: "The home page HTML is 361 KB, mostly inline markup and structured data. Worth trimming for a faster first load." },
+            { level: "Low", text: "The privacy policy meta description is 91 characters, shorter than it needs to be." },
+            { level: "Passed", text: "robots.txt allows crawling and lists the sitemap. Every page returns 200 with one H1 and a self-referencing canonical. No images missing alt text. Arabic and Urdu pages carry hreflang." },
+          ],
+        },
+      },
+      {
+        id: "ticket",
+        nav: "From finding to fix",
+        eyebrow: "From finding to fix",
+        title: "Every issue becomes",
+        muted: "a ticket you can act on.",
+        lead: "A tool says “Title too long”. My report turns the same finding from the sample above into this:",
+        block: {
+          kind: "ticket",
+          rows: [
+            { label: "Issue", text: "Titles over 60 characters on 6 pages" },
+            { label: "Where", text: "/services/woocommerce-development/, /services/flutter-app-development/, /services/wordpress-development/ and 3 case studies (full list in the sheet)" },
+            { label: "Why it matters", text: "Google shortens titles at roughly 600 pixels, so the end of the title, often the offer or the brand, disappears from results and can cost clicks." },
+            { label: "Fix", text: "Cut each title to about 55–60 characters with the main keyword first. Example: “Hire a WooCommerce Developer | Stores, Plugins & Checkout Fixes” (63) → “Hire a WooCommerce Developer | Stores & Checkout Fixes” (54)." },
+            { label: "Priority", text: "Quick win: medium impact, low effort" },
+            { label: "Owner", text: "Content editor · about 15 minutes" },
+          ],
+        },
+      },
+      {
+        id: "priorities",
+        nav: "What to fix first",
+        eyebrow: "Priorities",
+        title: "What to fix first:",
+        muted: "impact versus effort.",
+        lead: "Every finding lands in one of four groups, so your team starts where it pays off and doesn't burn a sprint on alt text while a money page sits out of Google.",
+        block: {
+          kind: "matrix",
+          cells: [
+            { title: "Quick wins", sub: "High impact · low effort", text: "Fix this week: a noindex tag on a money page, robots.txt blocking key sections, canonicals pointing to the wrong URL." },
+            { title: "Big projects", sub: "High impact · high effort", text: "Plan them: slow templates, site structure and internal linking, migration clean-up." },
+            { title: "Fill-ins", sub: "Low impact · low effort", text: "Batch them: alt text, short meta descriptions, minor heading fixes." },
+            { title: "Later", sub: "Low impact · high effort", text: "Park them: cosmetic HTML validation and rare edge-case URLs." },
+          ],
+        },
+      },
+      {
+        id: "tools",
+        nav: "Tools",
+        eyebrow: "Tools used",
+        title: "The tools I audit with,",
+        muted: "and what each one checks.",
+        lead: "Tools find the candidates. I decide what matters, and check it by hand in Chrome DevTools and Google's Rich Results Test.",
+        block: {
+          kind: "toolcards",
+          items: [
+            { tool: tools.screamingfrog, text: "The full crawl: status codes, canonicals, redirects, titles, headings, internal links and JavaScript rendering." },
+            { tool: tools.gsc, text: "Indexing reports, Core Web Vitals from real users, schema enhancement errors and the searches each page shows for." },
+            { tool: tools.pagespeed, text: "Lab tests plus Chrome user data for every key template, on mobile and desktop." },
+            { tool: tools.ahrefs, text: "Backlinks pointing to broken or redirected pages, and keyword data for pages worth saving." },
+            { tool: tools.semrush, text: "A second crawl and site audit to cross-check findings, so nothing is missed." },
+            { tool: tools.ga4, text: "Which pages bring leads and sales, so fixes are ranked by business impact, not just warnings." },
+          ],
+        },
+      },
+      {
+        id: "search-console",
+        nav: "Search Console",
+        eyebrow: "Search Console",
+        title: "Every audit starts from",
+        muted: "your own Google data.",
+        lead: "These are real client reports from Google Search Console. In an audit, the same reports show which problems are actually costing you impressions and clicks.",
+        block: { kind: "proof", slugs: ["jankowski-import-auto", "doctors-hospital-gujrat"] },
+        note: "After technical and on-page work, [Jankowski Import Auto](/work/jankowski-import-auto/) moved from an average position of 13.6 to 9.6 in a 28-day comparison, with clicks up from 30 to 71.",
+      },
+      {
+        id: "deliverables",
+        nav: "Deliverables",
+        eyebrow: "Deliverables",
+        title: "What you get",
+        muted: "at the end of the audit.",
+        block: {
+          kind: "cards",
+          cols: 3,
+          items: [
+            { title: "The audit report", text: "Every issue explained in plain English: what's wrong, where, why it matters and how to fix it." },
+            { title: "Prioritized fix list", text: "A spreadsheet with impact, effort, owner and status columns, ready to paste into Jira, Trello or Asana." },
+            { title: "Crawl data", text: "The full crawl export, so your developer can filter and check any URL themselves." },
+            { title: "Core Web Vitals summary", text: "Scores and the main cause of slowness for each key template, on mobile and desktop." },
+            { title: "Developer notes", text: "Code-level instructions for WordPress, Next.js or your platform, not just “fix this”." },
+            { title: "Walkthrough call", text: "A screen-share call to go through the findings and answer your team's questions." },
+          ],
+        },
+      },
+      {
+        id: "process",
+        nav: "5-day process",
+        eyebrow: "Process",
+        title: "Five working days,",
+        muted: "start to finish.",
+        block: {
+          kind: "steps",
+          items: [
+            { title: "Access and crawl", time: "Day 1", text: "Search Console and GA4 access, a full crawl and a list of your most important pages." },
+            { title: "Indexing and structure", time: "Day 2", text: "Indexing, canonicals, redirects, internal links and sitemaps checked against Google's data." },
+            { title: "Speed, rendering and schema", time: "Day 3", text: "Core Web Vitals per template, mobile and JavaScript rendering, structured data." },
+            { title: "Prioritize and write", time: "Day 4", text: "Findings ranked by impact and effort, with exact fixes written for each one." },
+            { title: "Walkthrough and handover", time: "Day 5", text: "Report, fix list and crawl data delivered, then a call to go through it together." },
+          ],
+        },
+      },
+      {
+        id: "packages",
+        nav: "Packages",
+        eyebrow: "Fixed packages",
+        title: "Fixed-price",
+        muted: "audit packages.",
+        lead: "Pick by the size of your site. Every package covers all 12 areas; bigger sites get deeper checks. You get the exact price in USD before you pay anything.",
+        block: {
+          kind: "packages",
+          items: [
+            { name: "Small site", size: "Up to 50 URLs", fit: "Local businesses and brochure sites", points: ["All 12 audit areas", "Prioritized fix list", "Crawl data export", "Delivered in 5 working days"] },
+            { name: "Business site", size: "Up to 500 URLs", fit: "Service businesses, blogs and multi-location sites", points: ["Everything in Small site", "Internal linking and content-duplication review", "Core Web Vitals per template", "30-minute walkthrough call"], featured: true },
+            { name: "Store and large site", size: "500+ URLs or ecommerce", fit: "WooCommerce stores and large content sites", points: ["Everything in Business site", "Faceted navigation and filter URLs", "Product schema and merchant listings", "Crawl budget analysis"] },
+          ],
+        },
+        note: "Not sure which one you need? Ask for the free mini audit first. I'll check your homepage and key pages and tell you which package fits.",
+      },
+      {
+        id: "fix-it",
+        nav: "I fix it for you",
+        eyebrow: "Optional",
+        title: "No developer?",
+        muted: "I'll fix it for you.",
+        block: {
+          kind: "prose",
+          paragraphs: [
+            "Most audits die in a shared folder. If your team is busy, I can work through the fix list myself, starting with the quick wins. I build WordPress and Next.js sites for a living, so fixes happen in the code and templates, not just in plugin settings.",
+            "Speed problems go to my [WordPress speed optimization service](/services/wordpress-speed-optimization/). For growth after the fixes, see [monthly SEO services](/services/seo-services/). Fix work is quoted separately, after you've seen the audit, so you never pay for fixes you don't need.",
+          ],
+        },
+      },
+      {
+        id: "when",
+        nav: "When you need one",
+        eyebrow: "Timing",
+        title: "When you need",
+        muted: "a technical SEO audit.",
+        block: {
+          kind: "cards",
+          cols: 3,
+          items: [
+            { title: "Before or after a migration", text: "New domain, platform or URL structure. An audit before the move protects rankings; one after finds what broke." },
+            { title: "When traffic drops", text: "Sudden falls are often technical: an accidental noindex, a broken redirect or a robots.txt change." },
+            { title: "When pages won't get indexed", text: "New pages stuck in “Discovered” or “Crawled, not indexed” for weeks." },
+            { title: "Before you invest in content", text: "Fix the base first, so new pages can rank instead of disappearing into a broken structure." },
+            { title: "When AI answers ignore you", text: "If ChatGPT, Perplexity or Google's AI Overviews never mention your business, crawl access and schema are the first checks." },
+            { title: "For multi-language sites", text: "hreflang, regional URLs and duplicate translations are easy to get wrong and hard to spot." },
+          ],
+        },
+      },
+      {
+        id: "audit-types",
+        nav: "Technical vs full audit",
+        eyebrow: "Which audit?",
+        title: "Technical SEO audit",
+        muted: "or a full SEO audit?",
+        block: {
+          kind: "cards",
+          cols: 2,
+          items: [
+            { title: "Technical SEO audit", text: "Can Google crawl, render, index and understand your site? Everything on this page: structure, speed, indexing, schema and code-level problems." },
+            { title: "Full SEO audit", text: "Adds keyword strategy, content quality, competitors and backlinks. It's the first month of my [monthly SEO services](/services/seo-services/)." },
+          ],
+        },
+      },
+    ],
+    faqs: [
+      { q: "What's included in your SEO technical audit services?", a: "All 12 areas on this page: crawling, indexing, canonicals, redirects, internal links, Core Web Vitals, mobile, JavaScript rendering, structured data, titles and headings, sitemaps and hreflang, and AI search readiness. You get a report, a prioritized fix list, the crawl data and developer notes." },
+      { q: "How long does a technical SEO audit take?", a: "Five working days from the day I get access to Search Console and Analytics. For very large sites I give you a delivery date before we start." },
+      { q: "How much does a technical SEO audit cost?", a: "It's a fixed price based on the size of your site and the package you pick. You get the exact price in USD within 24 hours, before you pay anything." },
+      { q: "What access do you need?", a: "Read access to Google Search Console and GA4 is enough for the audit. Access to your CMS or a staging site is only needed if you want me to fix the issues as well." },
+      { q: "Is a free SEO audit tool enough?", a: "Free tools are a good first check, but they list warnings without context and can't see your Search Console data. A professional audit decides which issues actually cost you traffic and how to fix them on your platform." },
+      { q: "Can you fix the issues you find?", a: "Yes. I'm a WordPress and Next.js developer, so I can fix the code, templates and settings myself. Fix work is quoted separately after you've seen the audit." },
+      { q: "Will a technical audit improve my rankings?", a: "The audit itself changes nothing until the fixes are made. Fixing technical problems removes what's holding pages back, but nobody can guarantee positions in Google. You'll see the effect in your own Search Console data." },
+      { q: "Do you audit sites that aren't on WordPress?", a: "Yes. A technical SEO audit works on any platform, including Shopify, Wix, Webflow and custom builds. For platforms I don't develop on, the fix list is written for your developer." },
+    ],
+    final: { title: "Ready for an audit", muted: "you can actually act on?", text: "Send me your website. You'll get a fixed price within 24 hours, or start with a free mini audit to see how I work first." },
   },
 };

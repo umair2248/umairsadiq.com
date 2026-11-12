@@ -93,6 +93,30 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "technical-seo-audit",
+    name: "Technical SEO Audit",
+    title: "Technical SEO Audit Services",
+    metaTitle: "Technical SEO Audit Services | Fixed-Price Audit in 5 Days",
+    metaDescription:
+      "Technical SEO audit services with a clear fix list: crawl errors, indexing, Core Web Vitals, schema and internal links. Fixed price, delivered in 5 days.",
+    tagline: "A fixed-price technical SEO audit in 5 working days, with a fix list ranked by impact that your developer, or I, can act on.",
+    intro: [
+      "A technical SEO audit finds what stops Google from crawling, indexing and ranking your site, and turns it into a prioritized fix list.",
+    ],
+    deliverables: [
+      { title: "Audit report", text: "Every issue explained: what's wrong, where, why it matters and how to fix it." },
+      { title: "Prioritized fix list", text: "Impact, effort and owner for every finding, ready for your task board." },
+      { title: "Crawl data", text: "The full crawl export for your developer." },
+      { title: "Core Web Vitals summary", text: "Scores and causes per key template." },
+      { title: "Developer notes", text: "Code-level fixes for your platform." },
+      { title: "Walkthrough call", text: "A call to go through the findings together." },
+    ],
+    tools: [tools.screamingfrog, tools.gsc, tools.pagespeed, tools.ahrefs, tools.semrush, tools.ga4, tools.lighthouse],
+    related: ["jankowski-import-auto", "doctors-hospital-gujrat"],
+    color: "#2DD4BF",
+    faqs: [],
+  },
+  {
     slug: "woocommerce-development",
     name: "WooCommerce Development",
     title: "WooCommerce Development",
