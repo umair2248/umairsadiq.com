@@ -30,7 +30,7 @@ export type Block =
     }
   | { kind: "ticket"; rows: { label: string; text: string }[] }
   | { kind: "matrix"; cells: { title: string; sub: string; text: string }[] }
-  | { kind: "packages"; items: { name: string; size: string; fit: string; points: string[]; featured?: boolean; price?: string }[] };
+  | { kind: "packages"; cta?: string; items: { name: string; size: string; fit: string; points: string[]; featured?: boolean; price?: string }[] };
 
 export type Section = {
   id: string;
@@ -63,8 +63,10 @@ export type ServicePage = {
   faqs: Faq[];
   final: { title: string; muted: string; text: string };
   updated: string;
+  /** Currency for the budget field in the quote form (default USD) */
+  currency?: "USD" | "PKR" | "AED" | "GBP" | "AUD";
   /** Fixed packages, used for Offer schema */
-  offers?: { name: string; description: string }[];
+  offers?: { name: string; description: string; currency?: string }[];
 };
 
 const pricingNote =
@@ -113,10 +115,10 @@ export const servicePages: Record<string, ServicePage> = {
           items: [
             { title: "Technical SEO audit", text: "A full crawl with Screaming Frog, checked against Search Console: indexing, crawl errors, redirects, canonicals, duplicate pages, Core Web Vitals and structured data. You get a prioritized list, and I can fix every item myself.", href: "/services/technical-seo-audit/", linkLabel: "See technical SEO audit services" },
             { title: "On-page SEO", text: "Titles, meta descriptions, headings, internal links and copy reworked around real search demand, page by page, without keyword stuffing." },
-            { title: "Local SEO", text: "Google Business Profile, location pages, local schema and consistent business details across directories. If you need to hire a local SEO expert for a city or region, this is where most quick wins are." },
-            { title: "Ecommerce SEO", text: "Category and product structure, product schema, filters that don't create thousands of duplicate URLs, and crawl budget for [WooCommerce stores](/services/woocommerce-development/)." },
-            { title: "SEO-safe website migration", text: "Moving to a new domain, platform or URL structure without losing rankings: URL mapping, 301 redirects, canonical checks and close Search Console monitoring after launch." },
-            { title: "White-label SEO for agencies", text: "Audits, technical fixes and on-page work delivered under your agency's name. Several of my projects already come through agencies such as Visiventro and Revenue Pulses." },
+            { title: "Local SEO", text: "Google Business Profile, location pages, local schema and consistent business details across directories. If you need to hire a local SEO expert for a city or region, this is where most quick wins are.", href: "/services/small-business-seo/", linkLabel: "Small business SEO" },
+            { title: "Ecommerce SEO", text: "Category and product structure, product schema, filters that don't create thousands of duplicate URLs, and crawl budget for [WooCommerce stores](/services/woocommerce-development/).", href: "/services/ecommerce-seo/", linkLabel: "Ecommerce SEO services" },
+            { title: "SEO-safe website migration", text: "Moving to a new domain, platform or URL structure without losing rankings: URL mapping, 301 redirects, canonical checks and close Search Console monitoring after launch.", href: "/services/seo-website-migration/", linkLabel: "SEO website migration" },
+            { title: "White-label SEO for agencies", text: "Audits, technical fixes and on-page work delivered under your agency's name. Several of my projects already come through agencies such as Visiventro and Revenue Pulses.", href: "/services/white-label-seo/", linkLabel: "White label SEO" },
           ],
         },
         note: "Need the site itself fixed or rebuilt? See [WordPress development](/services/wordpress-development/) and [WordPress speed optimization](/services/wordpress-speed-optimization/).",
@@ -192,8 +194,8 @@ export const servicePages: Record<string, ServicePage> = {
           kind: "cards",
           cols: 3,
           items: [
-            { title: "Healthcare", text: "A hospital website ranking for local healthcare searches: 578 clicks and a 6.6 average position in a month.", href: "/work/doctors-hospital-gujrat/" },
-            { title: "Automotive", text: "An auto repair shop in California, from a 13.6 to a 9.6 average position in 28 days.", href: "/work/jankowski-import-auto/" },
+            { title: "Healthcare", text: "A hospital website ranking for local healthcare searches: 578 clicks and a 6.6 average position in a month.", href: "/healthcare-seo/", linkLabel: "Healthcare SEO" },
+            { title: "Automotive", text: "An auto repair shop in California, from a 13.6 to a 9.6 average position in 28 days.", href: "/auto-repair-seo/", linkLabel: "Auto repair SEO" },
             { title: "Fashion e-commerce", text: "A WooCommerce streetwear store with variations, sale pricing and a phone-friendly checkout.", href: "/work/aujwear/" },
             { title: "Food and recipes", text: "A recipe blog and shop set up with Rank Math and Site Kit for search from day one.", href: "/work/cooking-nations/" },
             { title: "Software and agencies", text: "Service pages for a software house offering web, app and SEO services.", href: "/work/visiventro/" },

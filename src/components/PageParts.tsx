@@ -112,7 +112,7 @@ export function FaqList({ faqs, title = "Frequently asked questions" }: { faqs: 
   );
 }
 
-export function CtaBand({ title, text, button = "Start a project" }: { title: React.ReactNode; text: string; button?: string }) {
+export function CtaBand({ title, text, button = "Start a project", href }: { title: React.ReactNode; text: string; button?: string; href?: string }) {
   return (
     <section className="section cta-band">
       <div className="container">
@@ -121,9 +121,15 @@ export function CtaBand({ title, text, button = "Start a project" }: { title: Re
             <h2 className="cta-band__title">{title}</h2>
             <p>{text}</p>
           </div>
-          <HireButton className="btn btn--accent btn--lg">
-            {button} <ArrowRight width={18} height={18} />
-          </HireButton>
+          {href ? (
+            <a href={href} target="_blank" rel="noopener noreferrer" className="btn btn--accent btn--lg">
+              {button} <ArrowRight width={18} height={18} />
+            </a>
+          ) : (
+            <HireButton className="btn btn--accent btn--lg">
+              {button} <ArrowRight width={18} height={18} />
+            </HireButton>
+          )}
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { CtaBand, JsonLd, PageHero, breadcrumbLd } from "@/components/PageParts"
 import { ArrowRight } from "@/components/Icons";
 import { Logo } from "@/components/Logo";
 import { SiteChrome } from "@/components/SiteChrome";
+import { landingPages } from "@/data/all-pages";
 import { services } from "@/data/pages";
 import { profile } from "@/data/site";
 
@@ -42,7 +43,7 @@ export default function ServicesPage() {
             Websites, SEO and apps, <span className="muted">built to be found.</span>
           </>
         }
-        lead="Six things I do every week for clients around the world. Pick the one you need, or tell me about your project and I'll suggest the right mix."
+        lead="The services I deliver every week for clients around the world, plus pages for specific industries and locations. Pick the one you need, or tell me about your project and I'll suggest the right mix."
       />
 
       <section className="section">
@@ -68,6 +69,29 @@ export default function ServicesPage() {
           </ul>
         </div>
       </section>
+
+      {(["industry", "location"] as const).map((g) => (
+        <section key={g} className="section" aria-labelledby={`group-${g}`}>
+          <div className="container">
+            <p className="eyebrow">{g === "industry" ? "Industries and engagement" : "Locations"}</p>
+            <h2 id={`group-${g}`} className="section-title fx-title" data-scroll="through">
+              {g === "industry" ? "Built for your industry," : "Where I work,"}{" "}
+              <span className="muted">{g === "industry" ? "or your way of working." : "remotely and in person."}</span>
+            </h2>
+            <ul className="other-services services-links" role="list">
+              {landingPages
+                .filter((p) => p.group === g)
+                .map((p) => (
+                  <li key={p.slug}>
+                    <a href={`/${p.slug}/`} style={{ "--c": p.color } as React.CSSProperties}>
+                      {p.name} <ArrowRight width={16} height={16} />
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </section>
+      ))}
 
       <CtaBand
         title={

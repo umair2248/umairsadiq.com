@@ -13,3 +13,6 @@ next-env.d.ts
 
 # Old static site kept locally only
 _old-site-backup/
+
+# Private SEO planning notes (keyword strategy), kept out of the public repo
+seo-briefs/

@@ -53,6 +53,39 @@ export const quoteEn: QuoteText = {
   ],
 };
 
+/** Budget ranges the visitor can pick, per currency. These are the visitor's budget, not my prices. */
+export const budgetsBy: Record<string, Choice[]> = {
+  USD: quoteEn.budgets,
+  PKR: [
+    { value: "Under PKR 50,000", label: "Under Rs 50,000" },
+    { value: "PKR 50,000 – 150,000", label: "Rs 50,000 – 150,000" },
+    { value: "PKR 150,000 – 500,000", label: "Rs 150,000 – 500,000" },
+    { value: "PKR 500,000+", label: "Rs 500,000+" },
+    { value: "Not sure yet" },
+  ],
+  AED: [
+    { value: "Under AED 2,000" },
+    { value: "AED 2,000 – 5,000" },
+    { value: "AED 5,000 – 20,000" },
+    { value: "AED 20,000+" },
+    { value: "Not sure yet" },
+  ],
+  GBP: [
+    { value: "Under £400" },
+    { value: "£400 – £1,200" },
+    { value: "£1,200 – £4,000" },
+    { value: "£4,000+" },
+    { value: "Not sure yet" },
+  ],
+  AUD: [
+    { value: "Under A$750" },
+    { value: "A$750 – A$2,500" },
+    { value: "A$2,500 – A$7,500" },
+    { value: "A$7,500+" },
+    { value: "Not sure yet" },
+  ],
+};
+
 export const wordpressTypes: Choice[] = [
   { value: "New WordPress website" },
   { value: "Redesign of an existing site" },

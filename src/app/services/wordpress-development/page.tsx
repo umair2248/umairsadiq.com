@@ -248,7 +248,9 @@ export default function HireWordPressDeveloperPage() {
             too slow? Start with <a href="/services/wordpress-speed-optimization/">WordPress speed optimization</a>. Want a
             headless build? I also pair WordPress with <a href="/services/nextjs-react-development/">Next.js and React</a>.
             Need more traffic after launch? My <a href="/services/seo-services/">SEO services</a> pick up where the build
-            ends.
+            ends. Need a feature no plugin offers? See{" "}
+            <a href="/services/custom-wordpress-plugin-development/">custom WordPress plugin development</a>. Want a developer
+            every month? <a href="/hire-dedicated-wordpress-developer/">Hire a dedicated WordPress developer</a>.
           </p>
         </div>
       </section>

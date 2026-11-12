@@ -1,3 +1,4 @@
+import { landingPages } from "@/data/all-pages";
 import { homeFaqs, homeSeo, recruiter } from "@/data/home";
 import { caseStudies, services } from "@/data/pages";
 import { contact, projects } from "@/data/site";
@@ -54,7 +55,7 @@ export function HomeServices() {
           and real examples, so you can see exactly what you get before we talk.
         </p>
         <ul className="service-grid home-services" role="list">
-          {services.map((s, i) => (
+          {services.filter((s) => s.core !== false).map((s, i) => (
             <li key={s.slug} className="service-card fx-rise" data-scroll="through" style={{ "--c": s.color } as React.CSSProperties}>
               <a href={`/services/${s.slug}/`} className="service-card__link">
                 <span className="service-card__num">{String(i + 1).padStart(2, "0")}</span>
@@ -72,6 +73,24 @@ export function HomeServices() {
             </li>
           ))}
         </ul>
+        <div className="home-more">
+          {(["industry", "location"] as const).map((g) => (
+            <div key={g} className="home-more__group reveal">
+              <p className="home-more__label">{g === "industry" ? "Industries and engagement" : "Locations"}</p>
+              <ul className="other-services" role="list">
+                {landingPages
+                  .filter((p) => p.group === g)
+                  .map((p) => (
+                    <li key={p.slug}>
+                      <a href={`/${p.slug}/`} style={{ "--c": p.color } as React.CSSProperties}>
+                        {p.name}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

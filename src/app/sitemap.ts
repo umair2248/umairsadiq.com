@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/data/pages";
+import { landingPages } from "@/data/all-pages";
 import { hreflang } from "@/data/i18n";
 import { profile, projects } from "@/data/site";
 
@@ -28,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.9,
+    })),
+    ...landingPages.map((p) => ({
+      url: `${site}/${p.slug}/`,
+      lastModified: new Date(`${p.updated}T12:00:00Z`),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
     { url: `${site}/work/`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     ...projects.map((p) => ({
