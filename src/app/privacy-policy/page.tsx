@@ -6,7 +6,7 @@ import { contact, profile } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Umair Sadiq",
-  description: "How umairsadiq.com uses analytics, cookies and the details you share when you get in touch.",
+  description: "How umairsadiq.com uses analytics, cookies, translation and the details you send through its forms, and how to ask for your data to be deleted.",
   alternates: { canonical: "/privacy-policy/" },
   robots: { index: true, follow: true },
 };

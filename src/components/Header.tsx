@@ -49,7 +49,7 @@ export function Header() {
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}${hidden && !open ? " is-hidden" : ""}`}>
       <div className="site-header__inner">
-        <a href="/" className="wordmark" onClick={close} aria-label={`${profile.name}, back to top`}>
+        <a href="/" className="wordmark" onClick={close}>
           <span className="wordmark__mark" aria-hidden="true">
             {profile.initials}
           </span>

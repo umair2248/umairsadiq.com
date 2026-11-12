@@ -43,11 +43,19 @@ export function ScrollFX() {
       }
     };
 
+    const last = new WeakMap<HTMLElement, string>();
     let raf = 0;
     const update = () => {
       raf = 0;
       const vh = window.innerHeight;
-      for (const el of els) el.style.setProperty("--p", clamp(progress(el, vh)).toFixed(4));
+      for (const el of els) {
+        // Only touch elements whose value changed; off-screen ones stay at 0 or 1.
+        const v = clamp(progress(el, vh)).toFixed(3);
+        if (last.get(el) !== v) {
+          last.set(el, v);
+          el.style.setProperty("--p", v);
+        }
+      }
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -59,6 +67,7 @@ export function ScrollFX() {
     // Marquee: drifts on its own, speeds up with scroll velocity and follows scroll direction.
     const track = document.querySelector<HTMLElement>(".marquee__track");
     let loop = 0;
+    let stopObserver = () => {};
     if (track) {
       root.classList.add("marquee-js");
       let x = 0;
@@ -78,9 +87,16 @@ export function ScrollFX() {
           if (x > 0) x -= half;
         }
         track.style.transform = `translate3d(${x.toFixed(2)}px,0,0)`;
-        loop = requestAnimationFrame(tick);
+        loop = visible ? requestAnimationFrame(tick) : 0;
       };
-      loop = requestAnimationFrame(tick);
+      // Only run the marquee while it is on screen.
+      let visible = false;
+      const io = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible && !loop) loop = requestAnimationFrame(tick);
+      });
+      io.observe(track);
+      stopObserver = () => io.disconnect();
     }
 
     return () => {
@@ -88,6 +104,7 @@ export function ScrollFX() {
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
       cancelAnimationFrame(loop);
+      stopObserver();
     };
   }, []);
 

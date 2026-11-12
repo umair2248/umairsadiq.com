@@ -37,7 +37,7 @@ export const services: Service[] = [
     slug: "wordpress-development",
     name: "WordPress Development",
     title: "WordPress Development",
-    metaTitle: "Hire a WordPress Developer | Custom Builds, Fixes & Redesigns",
+    metaTitle: "Hire a WordPress Developer | Custom Builds & Redesigns",
     metaDescription:
       "Hire a WordPress developer with 100+ sites shipped. Custom themes, plugins, Elementor and WooCommerce, built fast and SEO-ready. Get a quote in 24 hours.",
     tagline: "Custom WordPress sites you can run yourself, built clean and fast with SEO from day one.",

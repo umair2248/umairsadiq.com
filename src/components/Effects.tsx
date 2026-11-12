@@ -11,25 +11,36 @@ const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)"
  * Skipped entirely for reduced motion.
  */
 export function Loader() {
-  const [count, setCount] = useState(0);
   const [phase, setPhase] = useState<"count" | "open" | "gone">("count");
+  const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (reducedMotion()) {
-      document.documentElement.classList.add("intro-done");
+    const html = document.documentElement;
+    // Phones, repeat visits in the same session and reduced motion skip the curtain
+    // (decided before paint in layout.tsx, which adds .no-curtain).
+    if (reducedMotion() || html.classList.contains("no-curtain")) {
+      html.classList.add("intro-done");
       setPhase("gone");
       return;
     }
-    document.documentElement.classList.add("curtain-lock");
+    try {
+      sessionStorage.setItem("curtain-seen", "1");
+    } catch {}
+    html.classList.add("curtain-lock");
     const start = performance.now();
-    const duration = 1500;
+    const duration = 900;
+    const counts = Array.from(root.current?.querySelectorAll<HTMLElement>(".curtain__count") ?? []);
+    const bars = Array.from(root.current?.querySelectorAll<HTMLElement>(".curtain__bar") ?? []);
     let raf = 0;
     let t1 = 0;
+    // Write straight to the DOM each frame instead of re-rendering React 60 times a second.
     const step = (now: number) => {
       const t = Math.min(1, (now - start) / duration);
-      setCount(Math.round((1 - Math.pow(1 - t, 3)) * 100));
+      const n = Math.round((1 - Math.pow(1 - t, 3)) * 100);
+      for (const c of counts) c.textContent = String(n).padStart(3, "0");
+      for (const b of bars) b.style.transform = `scaleX(${n / 100})`;
       if (t < 1) raf = requestAnimationFrame(step);
-      else t1 = window.setTimeout(() => setPhase((p) => (p === "count" ? "open" : p)), 250);
+      else t1 = window.setTimeout(() => setPhase((p) => (p === "count" ? "open" : p)), 150);
     };
     raf = requestAnimationFrame(step);
     return () => {
@@ -63,14 +74,15 @@ export function Loader() {
       <p className="curtain__role">Websites that rank · Apps that ship</p>
       <div className="curtain__foot">
         <span>Raising the curtain</span>
-        <span className="curtain__count">{String(count).padStart(3, "0")}</span>
+        <span className="curtain__count">000</span>
       </div>
-      <span className="curtain__bar" style={{ transform: `scaleX(${count / 100})` }} />
+      <span className="curtain__bar" style={{ transform: "scaleX(0)" }} />
     </div>
   );
 
   return (
     <div
+      ref={root}
       className={`curtain${phase === "open" ? " is-open" : ""}`}
       aria-hidden="true"
       onClick={() => setPhase((p) => (p === "count" ? "open" : p))}
@@ -96,6 +108,7 @@ export function Cursor() {
     const move = (e: PointerEvent) => {
       x = e.clientX;
       y = e.clientY;
+      if (!raf) raf = requestAnimationFrame(loop);
       d.style.transform = `translate(${x}px, ${y}px)`;
       const target = e.target as HTMLElement | null;
       const hover = !!target?.closest("a, button, [data-cursor='hover'], input, select, textarea, label");
@@ -106,13 +119,13 @@ export function Cursor() {
       rx += (x - rx) * 0.18;
       ry += (y - ry) * 0.18;
       r.style.transform = `translate(${rx}px, ${ry}px)`;
-      raf = requestAnimationFrame(loop);
+      // Stop once the ring has caught up; the next pointer move starts it again.
+      raf = Math.abs(x - rx) + Math.abs(y - ry) > 0.5 ? requestAnimationFrame(loop) : 0;
     };
     const leave = () => document.documentElement.classList.remove("has-cursor");
 
     window.addEventListener("pointermove", move, { passive: true });
     document.addEventListener("pointerleave", leave);
-    raf = requestAnimationFrame(loop);
     return () => {
       window.removeEventListener("pointermove", move);
       document.removeEventListener("pointerleave", leave);

@@ -8,7 +8,7 @@ import { caseStudies } from "@/data/pages";
 import { profile, projects } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies: WordPress, SEO & Next.js | Umair Sadiq",
+  title: { absolute: "Portfolio & Case Studies: WordPress, SEO & Next.js" },
   description:
     "Case studies by Umair Sadiq: WordPress websites, SEO results from Google Search Console, and Next.js and React web apps, all live today.",
   alternates: { canonical: "/work/" },

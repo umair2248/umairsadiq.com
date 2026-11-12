@@ -8017,3 +8017,22 @@ html.is-translating :is(.notranslate, .term, .browser, .lang) :is(p, li, h1, h2,
 .services-links {
   margin-top: 28px;
 }
+
+/* Curtain intro is skipped on phones, repeat visits and reduced motion (see layout.tsx). */
+.no-curtain .curtain {
+  display: none !important;
+}
+@media (min-width: 1000px) {
+  .footer__cols {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Skip rendering work for sections far below the fold until they come near the screen. */
+#experience,
+#process,
+.faq,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

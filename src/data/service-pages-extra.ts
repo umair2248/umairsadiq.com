@@ -400,7 +400,7 @@ export const extraServicePages: Record<string, ServicePage> = {
 
   /* ───────────── Migration ───────────── */
   "seo-website-migration": {
-    metaTitle: "SEO Website Migration Services | Move Without Losing Rankings",
+    metaTitle: "SEO Website Migration Services | Keep Your Rankings",
     metaDescription: "SEO website migration services for redesigns, domain moves and WordPress to Next.js. Redirect maps, crawl checks and post-launch monitoring to protect rankings.",
     h1: "Website Migration Without Losing Your Rankings",
     lead: "My SEO website migration services protect your rankings when you redesign, change domain or move platform, including WordPress to Next.js. Every old URL gets mapped, redirected and checked, and I watch Search Console after launch. I'm Umair Sadiq, a developer and SEO specialist, so I can do the migration and the SEO.",

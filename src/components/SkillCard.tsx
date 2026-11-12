@@ -39,8 +39,8 @@ export function SkillCard() {
         className={`skill-card${flipped ? " is-flipped" : ""}${live ? " is-live" : ""}`}
         onClick={() => setFlipped((f) => !f)}
         aria-pressed={flipped}
-        aria-label={flipped ? "Skill card, back side. Press to flip to the front." : "Skill card, front side. Press to flip."}
       >
+        <span className="sr-only">{flipped ? "Skill card, back side. Press to flip to the front." : "Skill card, front side. Press to flip."}</span>
         <span className="skill-card__face skill-card__front">
           <span className="skill-card__shine" aria-hidden="true" />
           <span className="skill-card__top">

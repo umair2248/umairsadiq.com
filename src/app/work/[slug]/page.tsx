@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = clip(cs?.meta ?? p.description);
   const url = `/work/${p.slug}/`;
   return {
-    title: `${title} | ${profile.name}`,
+    title: { absolute: `${title} | ${profile.name}`.length <= 60 ? `${title} | ${profile.name}` : title },
     description,
     alternates: { canonical: url },
     openGraph: { url, title, description, images: [{ url: p.image, width: 1440, height: 900, alt: `${p.name} homepage` }] },

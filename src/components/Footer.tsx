@@ -1,3 +1,4 @@
+import { landingPages } from "@/data/all-pages";
 import { services } from "@/data/pages";
 import { contact, navLinks, profile, tools } from "@/data/site";
 import { CookieSettingsButton } from "./CookieConsent";
@@ -93,6 +94,25 @@ export function Footer() {
               </li>
               <li>
                 <a href="/privacy-policy/">Privacy policy</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="footer__label">Industries &amp; locations</h2>
+            <ul role="list">
+              {landingPages.map((p) => (
+                <li key={p.slug}>
+                  <a href={`/${p.slug}/`}>{p.name}</a>
+                </li>
+              ))}
+              <li>
+                <a href="/ar/" hrefLang="ar" lang="ar">
+                  العربية
+                </a>{" "}
+                ·{" "}
+                <a href="/ur/" hrefLang="ur" lang="ur">
+                  اردو
+                </a>
               </li>
             </ul>
           </div>

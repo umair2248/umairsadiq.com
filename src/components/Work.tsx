@@ -86,7 +86,7 @@ export function Work() {
           {featured.map((p, i) => (
             <li key={p.name} className="case fx-rise" data-scroll="through" style={{ "--c": p.color } as React.CSSProperties}>
               <div className="case__media">
-                <Browser project={p} priority={i === 0} />
+                <Browser project={p} />
               </div>
 
               <div className="case__info">

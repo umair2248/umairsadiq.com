@@ -40,11 +40,12 @@ export function Counter({ value }: { value: string }) {
 
   if (!match) return <span>{value}</span>;
   return (
-    <span ref={ref} aria-label={value}>
+    <span ref={ref}>
       <span aria-hidden="true">
         {n}
         {suffix}
       </span>
+      <span className="sr-only">{value}</span>
     </span>
   );
 }

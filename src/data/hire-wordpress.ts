@@ -6,7 +6,7 @@ import type { Faq } from "./pages";
 import { tools } from "./site";
 
 export const hireWp = {
-  metaTitle: "Hire a WordPress Developer | Custom Builds, Fixes & Redesigns",
+  metaTitle: "Hire a WordPress Developer | Custom Builds & Redesigns",
   metaDescription:
     "Hire a WordPress developer with 100+ sites shipped. Custom themes, plugins, Elementor and WooCommerce, built fast and SEO-ready. Get a quote in 24 hours.",
   h1: "Hire a WordPress Developer for Custom Sites That Load Fast and Rank",

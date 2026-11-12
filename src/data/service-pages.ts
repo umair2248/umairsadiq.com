@@ -255,7 +255,7 @@ export const servicePages: Record<string, ServicePage> = {
 
   /* ─────────────────────────── WooCommerce ─────────────────────────── */
   "woocommerce-development": {
-    metaTitle: "Hire a WooCommerce Developer | Stores, Plugins & Checkout Fixes",
+    metaTitle: "Hire a WooCommerce Developer | Stores & Checkout Fixes",
     metaDescription:
       "Hire a WooCommerce developer for new stores, custom plugins, payment gateways and checkout fixes. Fast, SEO-ready online stores built on WordPress.",
     h1: "Hire a WooCommerce Developer to Build, Fix or Scale Your Store",
@@ -710,7 +710,7 @@ export const servicePages: Record<string, ServicePage> = {
 
   /* ─────────────────────────── Flutter ─────────────────────────── */
   "flutter-app-development": {
-    metaTitle: "Hire a Flutter App Developer | Android & iOS From One Codebase",
+    metaTitle: "Hire a Flutter App Developer | Android & iOS, One Codebase",
     metaDescription:
       "Hire a Flutter app developer to ship Android and iOS apps from one codebase. Firebase, REST APIs and app store launch included.",
     h1: "Hire a Flutter App Developer for Android and iOS",
@@ -930,7 +930,7 @@ export const servicePages: Record<string, ServicePage> = {
             { level: "Medium", text: "6 titles are over 60 characters and may be cut off in Google: three service pages and three case studies." },
             { level: "Low", text: "The home page HTML is 361 KB, mostly inline markup and structured data. Worth trimming for a faster first load." },
             { level: "Low", text: "The privacy policy meta description is 91 characters, shorter than it needs to be." },
-            { level: "Passed", text: "robots.txt allows crawling and lists the sitemap. Every page returns 200 with one H1 and a self-referencing canonical. No images missing alt text. Arabic and Urdu pages carry hreflang." },
+            { level: "Passed", text: "Update: I fixed the long titles the same week. robots.txt allows crawling and lists the sitemap. Every page returns 200 with one H1 and a self-referencing canonical. No images missing alt text. Arabic and Urdu pages carry hreflang." },
           ],
         },
       },
