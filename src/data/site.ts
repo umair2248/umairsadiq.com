@@ -52,6 +52,13 @@ export const trustpilot = {
   businessUnitId: "",
   collectorTemplateId: "",
   ratingTemplateId: "",
+  /**
+   * Real reviews copied from the Trustpilot profile, newest first. Only add reviews
+   * that are actually on Trustpilot; the section links back there. Empty = show a
+   * "leave a review" card instead.
+   * Example: { name: "Jane D.", country: "US", rating: 5, title: "Great work", text: "…", date: "2026-11-20" }
+   */
+  reviews: [] as { name: string; country?: string; rating: number; title?: string; text: string; date: string }[],
 };
 
 export function isPlaceholder(value: string) {

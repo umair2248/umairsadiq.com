@@ -6,6 +6,7 @@ import { HireButton } from "./HireButton";
 import { ArrowRight, WhatsApp } from "./Icons";
 import { Logo } from "./Logo";
 import { RotatingWord } from "./RotatingWord";
+import { TrustBadge } from "./TrustReviews";
 
 /** Logos floating around the skill card: [tool, top %, left %, depth, delay s]. */
 const floaters = [
@@ -69,6 +70,9 @@ export function Hero() {
             >
               <WhatsApp width={18} height={18} /> Free 15-min call
             </a>
+          </div>
+          <div className="hero__trust intro" style={{ "--d": 5.5 } as React.CSSProperties}>
+            <TrustBadge />
           </div>
 
           <div className="hero__ai intro" style={{ "--d": 6 } as React.CSSProperties}>

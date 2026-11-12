@@ -15,6 +15,7 @@ import { JsonLd, faqLd } from "@/components/PageParts";
 import { Process } from "@/components/Process";
 import { ScrollFX } from "@/components/ScrollFX";
 import { Toolkit } from "@/components/Toolkit";
+import { TrustReviews } from "@/components/TrustReviews";
 import { Work } from "@/components/Work";
 import { homeFaqs, homeSeo } from "@/data/home";
 import { hreflang } from "@/data/i18n";
@@ -50,6 +51,7 @@ export default function Home() {
         <HomeServices />
         <Doors />
         <HomeResults />
+        <TrustReviews />
         <Toolkit />
         <Work />
         <CallCta

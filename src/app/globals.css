@@ -8065,3 +8065,118 @@ html.is-translating :is(.notranslate, .term, .browser, .lang) :is(p, li, h1, h2,
 .home-tp.tp-widget {
   min-height: 24px;
 }
+
+/* Trustpilot stars, hero badge and reviews section */
+.tp-stars {
+  display: inline-flex;
+  gap: 2px;
+  flex: none;
+}
+.tp-stars svg rect {
+  fill: color-mix(in srgb, var(--text) 18%, transparent);
+}
+.tp-stars svg path {
+  fill: #fff;
+}
+.tp-stars svg.is-on rect {
+  fill: #00b67a;
+}
+.hero__trust {
+  margin-top: 18px;
+}
+.tp-badge {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 14px 8px 10px;
+  border: 1px solid color-mix(in srgb, #00b67a 40%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, #00b67a 8%, transparent);
+  font-size: 0.88rem;
+  transition: border-color 0.3s, background 0.3s, transform 0.4s var(--ease);
+}
+.tp-badge:hover {
+  border-color: #00b67a;
+  background: color-mix(in srgb, #00b67a 16%, transparent);
+  transform: translateY(-2px);
+}
+.tp-badge strong {
+  color: #00b67a;
+}
+.tp-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 1.05rem;
+}
+.tp-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+@media (min-width: 760px) {
+  .tp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1100px) {
+  .tp-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.tp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+.tp-card h3 {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+}
+.tp-card blockquote {
+  margin: 0;
+  color: color-mix(in srgb, var(--text) 80%, var(--muted));
+  line-height: 1.65;
+}
+.tp-card__by {
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.tp-all {
+  margin-top: 24px;
+}
+.tp-empty {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  margin-top: 32px;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid color-mix(in srgb, #00b67a 40%, var(--line));
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(80% 80% at 100% 0%, color-mix(in srgb, #00b67a 16%, transparent), transparent 70%),
+    var(--surface);
+}
+@media (min-width: 900px) {
+  .tp-empty {
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+  }
+}
+.tp-empty h3 {
+  font-family: var(--font-head);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+}
+.tp-empty p {
+  margin-top: 8px;
+  max-width: 40rem;
+  color: var(--muted);
+}
