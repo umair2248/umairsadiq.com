@@ -115,7 +115,7 @@ const jsonLd = {
         url: c.url.startsWith("/") ? `${site}${c.url}` : c.url,
         recognizedBy: { "@type": "Organization", name: c.issuer, url: c.issuerUrl },
       })),
-      sameAs: [contact.linkedin, contact.github],
+      sameAs: [contact.linkedin, contact.github, contact.facebook, contact.instagram, contact.x, contact.reddit],
       knowsAbout: [
         "WordPress development",
         "WordPress plugin development",
@@ -183,6 +183,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <link rel="me" href={contact.linkedin} />
         <link rel="me" href={contact.github} />
+        <link rel="me" href={contact.facebook} />
+        <link rel="me" href={contact.instagram} />
+        <link rel="me" href={contact.x} />
+        <link rel="me" href={contact.reddit} />
         {/* Google Consent Mode v2: everything denied by default, then the visitor's saved choice (if any).
             Must run before Google Tag Manager. The banner is components/CookieConsent.tsx. */}
         <script

@@ -108,3 +108,31 @@ export const Zoom = (p: P) => (
     <path d="m20 20-4-4M11 8v6M8 11h6" />
   </svg>
 );
+export const Facebook = (p: P) => (
+  <svg {...base(p)}>
+    <path d="M15.5 3H13a4 4 0 0 0-4 4v3H6.5v3.5H9V21h3.5v-7.5h2.7l.6-3.5h-3.3V7.5a1 1 0 0 1 1-1h2z" />
+  </svg>
+);
+export const Instagram = (p: P) => (
+  <svg {...base(p)}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <path d="M17.5 6.5v.01" />
+  </svg>
+);
+export const XLogo = (p: P) => (
+  <svg {...base(p)}>
+    <path d="M4 4h4.5L20 20h-4.5z" />
+    <path d="M4.5 20l6.6-7.2M19.5 4l-6.4 7" />
+  </svg>
+);
+export const Reddit = (p: P) => (
+  <svg {...base(p)}>
+    <ellipse cx="12" cy="14.5" rx="8" ry="5.5" />
+    <path d="M12 9l1.3-5.5 4.2 1" />
+    <circle cx="18.6" cy="4.8" r="1.5" />
+    <path d="M9 13.5v.01M15 13.5v.01M9.5 16.7c1.5.9 3.5.9 5 0" />
+    <circle cx="4.6" cy="10.6" r="1.8" />
+    <circle cx="19.4" cy="10.6" r="1.8" />
+  </svg>
+);

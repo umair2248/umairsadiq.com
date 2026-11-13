@@ -8231,3 +8231,44 @@ html.is-translating :is(.notranslate, .term, .browser, .lang) :is(p, li, h1, h2,
     padding: 20px;
   }
 }
+
+/* Socials: footer and menu icons wrap; labelled "follow" pills in contact sections */
+.footer__socials,
+.menu-overlay__socials {
+  flex-wrap: wrap;
+}
+.social-row {
+  margin-top: 28px;
+}
+.social-row ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+.social-row a {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px 8px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.4s var(--ease);
+}
+.social-row a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  transform: translateY(-3px);
+}
+@media (max-width: 520px) {
+  .social-row ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .social-row a {
+    justify-content: center;
+  }
+}

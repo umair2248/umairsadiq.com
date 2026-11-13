@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { contact, navLinks, profile } from "@/data/site";
 import { HireButton } from "./HireButton";
 import { LangSwitch } from "./LangSwitch";
-import { ArrowUpRight, Download, GitHub, LinkedIn, Mail, Phone, WhatsApp } from "./Icons";
+import { ArrowUpRight, Download, Mail, Phone, WhatsApp } from "./Icons";
+import { socialLinks } from "./Socials";
 import { ThemeToggle } from "./ThemeToggle";
 import { WorkingHours } from "./WorkingHours";
 
@@ -119,18 +120,15 @@ export function Header() {
               </a>
             </div>
             <ul role="list" className="menu-overlay__socials">
+              {socialLinks.map(({ label, href, Icon }) => (
+                <li key={label}>
+                  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
+                    <Icon width={20} height={20} />
+                  </a>
+                </li>
+              ))}
               <li>
-                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <LinkedIn width={20} height={20} />
-                </a>
-              </li>
-              <li>
-                <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                  <GitHub width={20} height={20} />
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${contact.email}`} aria-label="Email">
+                <a href={`mailto:${contact.email}`} aria-label="Email" title="Email">
                   <Mail width={20} height={20} />
                 </a>
               </li>

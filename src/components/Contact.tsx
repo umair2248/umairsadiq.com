@@ -1,5 +1,6 @@
 import { contact, profile } from "@/data/site";
 import { HireButton } from "./HireButton";
+import { SocialRow } from "./Socials";
 import { ArrowRight, ArrowUpRight, Download, GitHub, LinkedIn, Mail, Phone, WhatsApp } from "./Icons";
 
 export function Contact() {
@@ -45,6 +46,7 @@ export function Contact() {
             </li>
           ))}
         </ul>
+        <SocialRow className="reveal" />
       </div>
     </section>
   );

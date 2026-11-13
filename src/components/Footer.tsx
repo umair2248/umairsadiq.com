@@ -5,14 +5,14 @@ import { contact, navLinks, profile, tools } from "@/data/site";
 import { CookieSettingsButton } from "./CookieConsent";
 import { CopyEmail } from "./CopyEmail";
 import { HireButton } from "./HireButton";
-import { ArrowRight, ArrowUp, Download, GitHub, LinkedIn, Mail, MapPin, Phone, WhatsApp } from "./Icons";
+import { ArrowRight, ArrowUp, Download, Mail, MapPin, Phone, WhatsApp } from "./Icons";
+import { socialLinks } from "./Socials";
 import { CurrentYear, LocalTime } from "./LocalTime";
 import { Logo } from "./Logo";
 
 export function Footer() {
   const socials = [
-    { label: "LinkedIn", href: contact.linkedin, Icon: LinkedIn },
-    { label: "GitHub", href: contact.github, Icon: GitHub },
+    ...socialLinks,
     { label: "WhatsApp", href: contact.whatsapp, Icon: WhatsApp },
     { label: "Email", href: `mailto:${contact.email}`, Icon: Mail },
   ];

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ogImage } from "@/data/seo";
 import { CopyEmail } from "@/components/CopyEmail";
+import { SocialRow } from "@/components/Socials";
 import { TrustpilotWidget } from "@/components/Trustpilot";
 import { HireButton } from "@/components/HireButton";
 import { ArrowRight, ArrowUpRight, Download, GitHub, LinkedIn, Mail, MapPin, Phone, WhatsApp } from "@/components/Icons";
@@ -94,6 +95,7 @@ export default function ContactPage() {
               </li>
             </ul>
             <TrustpilotWidget className="contact-page__tp" />
+            <SocialRow title="Find me on" />
             <p className="footer__label">Working hours</p>
             <p className="contact-page__hours">
               <WorkingHours />

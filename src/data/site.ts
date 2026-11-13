@@ -36,6 +36,10 @@ export const contact = {
   whatsapp: "https://wa.me/923244604162",
   linkedin: "https://www.linkedin.com/in/umair-sadiq-a24011359/",
   github: "https://github.com/umair2248",
+  facebook: "https://www.facebook.com/umairsadiqdev",
+  instagram: "https://www.instagram.com/uma.irsadiq/",
+  x: "https://x.com/umai_rsadiq",
+  reddit: "https://www.reddit.com/user/umair_sadiq/",
   // Generated from this file on every deploy (scripts/make-cv.mjs prints /cv/ to PDF).
   cv: "/cv/umair-sadiq-cv.pdf",
   cvPage: "/cv/",
