@@ -1,5 +1,5 @@
 import { contact } from "@/data/site";
-import { Facebook, GitHub, Instagram, LinkedIn, Reddit, XLogo } from "./Icons";
+import { Facebook, GitHub, Instagram, LinkedIn, Pinterest, Reddit, XLogo } from "./Icons";
 
 /** Every public profile, in one place: footer, menu, contact sections and schema sameAs all read this. */
 export const socialLinks = [
@@ -9,6 +9,7 @@ export const socialLinks = [
   { label: "Instagram", handle: "@uma.irsadiq", href: contact.instagram, Icon: Instagram },
   { label: "X", handle: "@umai_rsadiq", href: contact.x, Icon: XLogo },
   { label: "Reddit", handle: "u/umair_sadiq", href: contact.reddit, Icon: Reddit },
+  { label: "Pinterest", handle: "umair_sadiq", href: contact.pinterest, Icon: Pinterest },
 ];
 
 /** "Follow me" row of labelled social pills. */

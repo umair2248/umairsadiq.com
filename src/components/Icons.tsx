@@ -136,3 +136,9 @@ export const Reddit = (p: P) => (
     <circle cx="19.4" cy="10.6" r="1.8" />
   </svg>
 );
+export const Pinterest = (p: P) => (
+  <svg {...base(p)}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M10.6 8.8c.6-1 1.8-1.4 3-1.2 1.9.3 2.8 2 2.4 3.8-.4 1.9-1.8 3-3.3 2.7-.9-.2-1.4-.9-1.4-.9M12.1 10.4 9.6 20.6" />
+  </svg>
+);

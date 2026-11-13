@@ -40,6 +40,7 @@ export const contact = {
   instagram: "https://www.instagram.com/uma.irsadiq/",
   x: "https://x.com/umai_rsadiq",
   reddit: "https://www.reddit.com/user/umair_sadiq/",
+  pinterest: "https://www.pinterest.com/umair_sadiq/",
   // Generated from this file on every deploy (scripts/make-cv.mjs prints /cv/ to PDF).
   cv: "/cv/umair-sadiq-cv.pdf",
   cvPage: "/cv/",
