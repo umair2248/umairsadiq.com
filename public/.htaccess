@@ -10,6 +10,8 @@ ErrorDocument 404 /404.html
   RewriteRule ^(.*)$ https://umairsadiq.com/$1 [R=301,L]
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
   RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+  # Next.js also exports its 404 page as folders; answer them with a real 404, not a 200 duplicate.
+  RewriteRule ^(404|_not-found)(/.*)?$ - [R=404,L]
 </IfModule>
 
 # Long cache for fingerprinted build assets, short cache for pages

@@ -4,7 +4,9 @@ import { services } from "@/data/pages";
 import { certifications, contact, education, experience, profile, projects, toolGroups } from "@/data/site";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+// Body text: "optional" never swaps fonts after first paint. A late swap re-wraps the hero
+// paragraph (one line shorter in Inter) and caused layout shift plus a late LCP on slow phones.
+const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "optional" });
 const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
