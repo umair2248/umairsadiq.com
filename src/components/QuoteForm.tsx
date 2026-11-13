@@ -2,7 +2,8 @@
 
 import { useId, useRef, useState, type FormEvent } from "react";
 import { contact } from "@/data/site";
-import { sendLead } from "@/lib/sendLead";
+import { prefetchFormToken, sendLead } from "@/lib/sendLead";
+import { captchaOn, Turnstile } from "./Turnstile";
 import { ArrowRight, Check, WhatsApp } from "./Icons";
 
 import { quoteEn, wordpressTypes, type Choice, type QuoteText } from "@/data/quote";
@@ -23,6 +24,7 @@ export function QuoteForm({
 }) {
   const id = useId();
   const started = useRef(0);
+  const [captcha, setCaptcha] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -30,12 +32,17 @@ export function QuoteForm({
 
   const onFocus = () => {
     if (!started.current) started.current = Date.now();
+    prefetchFormToken();
   };
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (!form.reportValidity() || state === "sending") return;
+    if (captchaOn && !captcha) {
+      setError("Please complete the security check above the button.");
+      return;
+    }
     const d = new FormData(form);
     const get = (k: string) => String(d.get(k) ?? "").trim();
     setState("sending");
@@ -54,6 +61,7 @@ export function QuoteForm({
       },
       website_url: get("website_url"),
       elapsed: started.current ? Date.now() - started.current : 0,
+      turnstile: captcha,
     });
     if (res.ok) {
       setFirstName(get("name").split(" ")[0]);
@@ -140,6 +148,7 @@ export function QuoteForm({
         </label>
       </div>
 
+      <Turnstile onToken={setCaptcha} />
       <p className="quote__error" role="alert">
         {error}
       </p>

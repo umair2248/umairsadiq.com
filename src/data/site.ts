@@ -65,6 +65,16 @@ export const trustpilot = {
   reviews: [] as { name: string; country?: string; rating: number; title?: string; text: string; date: string }[],
 };
 
+/**
+ * Form protection. Every form already uses a honeypot, a signed server token, a link
+ * filter and a rate limit. To add the Cloudflare Turnstile captcha on top: create a free
+ * widget at dash.cloudflare.com → Turnstile for umairsadiq.com, paste its Site Key here,
+ * and put its Secret Key in form-data/turnstile-secret.txt on the server (outside public_html).
+ */
+export const security = {
+  turnstileSiteKey: "",
+};
+
 export function isPlaceholder(value: string) {
   return /example\.com|your-|0000000|wa\.me\/0+$/.test(value);
 }

@@ -8284,3 +8284,9 @@ html.is-translating :is(.notranslate, .term, .browser, .lang) :is(p, li, h1, h2,
     width: 100%;
   }
 }
+
+/* Cloudflare Turnstile captcha box */
+.captcha {
+  min-height: 65px;
+  margin-top: 16px;
+}

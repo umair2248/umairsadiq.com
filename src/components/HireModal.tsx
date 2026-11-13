@@ -3,7 +3,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { contact, hireSteps, isPlaceholder } from "@/data/site";
 import { HIRE_EVENT } from "./HireButton";
-import { sendLead } from "@/lib/sendLead";
+import { prefetchFormToken, sendLead } from "@/lib/sendLead";
+import { captchaOn, Turnstile } from "./Turnstile";
 import { ArrowLeft, ArrowRight, Check, Close, Mail, WhatsApp } from "./Icons";
 
 type Answers = {
@@ -94,10 +95,12 @@ export function HireModal() {
   const [done, setDone] = useState(false);
   const [sending, setSending] = useState(false);
   const openedAt = useRef(0);
+  const [captcha, setCaptcha] = useState("");
 
   useEffect(() => {
     const open = () => {
       openedAt.current = Date.now();
+      prefetchFormToken();
       dialog.current?.showModal();
       document.documentElement.classList.add("modal-open");
     };
@@ -144,6 +147,10 @@ export function HireModal() {
       return;
     }
     if (sending) return;
+    if (captchaOn && !captcha) {
+      setError("Please complete the security check above the button.");
+      return;
+    }
     setSending(true);
     const sym = hireSteps.currencies.find((c) => c.code === a.currency)?.symbol ?? "";
     const res = await sendLead({
@@ -160,6 +167,7 @@ export function HireModal() {
       },
       website_url: a.trap,
       elapsed: Date.now() - openedAt.current,
+      turnstile: captcha,
     });
     setSending(false);
     if (res.ok) setDone(true);
@@ -329,6 +337,7 @@ export function HireModal() {
               ) : null}
             </div>
 
+            {step === TOTAL - 1 && !done ? <Turnstile onToken={setCaptcha} /> : null}
             <p className="hire__error" role="alert">
               {error}
             </p>

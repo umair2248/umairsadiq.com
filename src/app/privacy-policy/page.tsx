@@ -70,6 +70,13 @@ export default function PrivacyPage() {
               &ldquo;googtrans&rdquo; so every page stays in that language. Pick English to switch it off and remove the cookie.
             </p>
 
+            <h2>Spam protection</h2>
+            <p>
+              To keep bots out of the contact forms, the site checks how the form was sent (a hidden field, timing and a
+              short-lived security token) and may show a Cloudflare Turnstile check, which Cloudflare runs under its own
+              privacy policy. Your IP address is used only to limit how many messages can be sent per hour.
+            </p>
+
             <h2>Trustpilot</h2>
             <p>
               Reviews are collected and shown through Trustpilot. The Trustpilot widget loads from Trustpilot&rsquo;s

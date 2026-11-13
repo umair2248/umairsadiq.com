@@ -170,6 +170,45 @@ if (count($hits) >= MAX_PER_HOUR) {
 $hits[] = $now;
 @file_put_contents($rateFile, json_encode($hits), LOCK_EX);
 
+// ── Bot checks ──────────────────────────────────────────────────────────────
+// 1. Signed token from form-token.php: proves the form was loaded on the site by a
+//    browser running JavaScript, at least 3 seconds and at most 2 hours ago.
+$secretFile = $dataDir . '/form-secret.txt';
+$secret = is_file($secretFile) ? trim((string) file_get_contents($secretFile)) : '';
+$token = clean($in['token'] ?? '', 200);
+$parts = explode('.', $token);
+$tokenOk = $secret !== '' && count($parts) === 3
+    && hash_equals(hash_hmac('sha256', $parts[0] . '.' . $parts[1], $secret), $parts[2])
+    && $now - (int) $parts[0] >= 3 && $now - (int) $parts[0] <= 7200;
+if (!$tokenOk) {
+    respond(403, ['ok' => false, 'error' => 'Your session expired. Please reload the page and send the form again.']);
+}
+
+// 2. Cloudflare Turnstile, once its secret key is in ../../form-data/turnstile-secret.txt.
+$tsFile = $dataDir . '/turnstile-secret.txt';
+$tsSecret = is_file($tsFile) ? trim((string) file_get_contents($tsFile)) : '';
+if ($tsSecret !== '') {
+    $tsResponse = clean($in['turnstile'] ?? '', 2048);
+    $verify = $tsResponse === '' ? false : @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => 'Content-Type: application/x-www-form-urlencoded',
+            'content' => http_build_query(['secret' => $tsSecret, 'response' => $tsResponse, 'remoteip' => $ip]),
+            'timeout' => 10,
+        ],
+    ]));
+    $result = $verify ? json_decode($verify, true) : null;
+    if (!is_array($result) || empty($result['success'])) {
+        respond(403, ['ok' => false, 'error' => 'The security check did not pass. Please tick the check box again and resend.']);
+    }
+}
+
+// 3. Link spam: links in the name, or a message stuffed with links. Bots get a silent "ok".
+$linkCount = preg_match_all('~https?://|www\.~i', $message);
+if (preg_match('~https?://|www\.|\.(com|ru|xyz|top)\b~i', $name) || $linkCount > 3) {
+    respond(200, ['ok' => true]);
+}
+
 // ── Emails ──────────────────────────────────────────────────────────────────
 date_default_timezone_set('Asia/Karachi');
 $when = date('D, j M Y, g:i A') . ' PKT';
