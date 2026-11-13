@@ -8272,3 +8272,15 @@ html.is-translating :is(.notranslate, .term, .browser, .lang) :is(p, li, h1, h2,
     justify-content: center;
   }
 }
+.footer__socials {
+  gap: 8px;
+}
+.footer__socials a {
+  width: 44px;
+  height: 44px;
+}
+@media (max-width: 520px) {
+  .social-row a {
+    width: 100%;
+  }
+}
