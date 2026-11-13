@@ -33,7 +33,7 @@ export function TrustBadge() {
         <>
           <TpStars filled={0} size={18} />
           <span>
-            <strong>Trustpilot</strong> · Worked with me? Leave a review
+            <strong>Trustpilot</strong> · <span className="tp-long">Worked with me? </span>Leave a review
           </span>
         </>
       )}

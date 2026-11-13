@@ -64,7 +64,7 @@ export function TrustpilotWidget({ kind = "collector", className = "" }: { kind?
   if (!live) {
     return (
       <a href={trustpilot.profileUrl} target="_blank" rel="noopener noreferrer" className={`tp-link ${className}`}>
-        <Star /> Worked with me? <strong>Review me on Trustpilot</strong>
+        <Star /> <span className="tp-long">Worked with me? </span><strong>Review me on Trustpilot</strong>
       </a>
     );
   }

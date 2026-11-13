@@ -8180,3 +8180,54 @@ html.is-translating :is(.notranslate, .term, .browser, .lang) :is(p, li, h1, h2,
   max-width: 40rem;
   color: var(--muted);
 }
+
+/* Trustpilot: keep badges on one tidy line and let them fit any screen */
+.tp-badge,
+.tp-link {
+  flex-wrap: nowrap;
+  max-width: 100%;
+  line-height: 1.35;
+}
+.tp-badge > span:not(.tp-stars),
+.tp-link > span {
+  min-width: 0;
+}
+.tp-badge svg,
+.tp-link svg {
+  flex: none;
+}
+.tp-empty > .tp-stars {
+  justify-self: start;
+}
+@media (max-width: 899px) {
+  .tp-empty .btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media (max-width: 520px) {
+  .tp-long {
+    display: none;
+  }
+  .tp-badge {
+    gap: 8px;
+    padding: 8px 12px 8px 8px;
+    font-size: 0.84rem;
+  }
+  .tp-badge .tp-stars svg {
+    width: 15px;
+    height: 15px;
+  }
+  .tp-link {
+    display: flex;
+    justify-content: center;
+    font-size: 0.86rem;
+  }
+  .tp-empty > .tp-stars svg {
+    width: 26px;
+    height: 26px;
+  }
+  .tp-card {
+    padding: 20px;
+  }
+}
