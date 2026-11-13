@@ -73,7 +73,7 @@ export const trustpilot = {
  * and put its Secret Key in form-data/turnstile-secret.txt on the server (outside public_html).
  */
 export const security = {
-  turnstileSiteKey: "",
+  turnstileSiteKey: "0x4AAAAAAF_hCUa3-HAswO90",
 };
 
 export function isPlaceholder(value: string) {
