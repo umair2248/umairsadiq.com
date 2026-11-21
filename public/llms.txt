@@ -47,7 +47,7 @@
 - AUJ Wear (https://aujwear.pk/) [delivered via Visiventro agency]: WooCommerce store for a Pakistani streetwear brand (oversized tees).
 - Cooking Nations (https://cookingnations.com/): WordPress recipe blog and shop (Elementor, WooCommerce, Rank Math).
 - Visiventro (https://visiventro.com/): WordPress.
-- MDN Express AB (https://mdnexpressab.com/) [delivered via Revenue Pulses agency]: WordPress.
+- MDN Express AB (https://mdnexpressab.com/) [delivered via Roam Growth agency]: WordPress.
 
 ## Education
 - BS Information Technology, University of Gujrat (https://uog.edu.pk/) (2023 – 2027)

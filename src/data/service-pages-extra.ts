@@ -13,7 +13,7 @@ export const extraServicePages: Record<string, ServicePage> = {
     h1: "White Label SEO and WordPress Services for Agencies",
     lead: "My white label SEO reseller services let your agency sell SEO and WordPress work under your own brand while I do the delivery. Audits, on-page SEO, local SEO and WordPress builds, with unbranded reports and an NDA. I'm Umair Sadiq, and I already work this way for agencies today.",
     intro: [
-      "I build and maintain WordPress sites for an international agency's clients every day at ABCDMEDIA LTD, and several of the projects on this site came to me through agencies: Doctors Hospital Gujrat and AUJ Wear through Visiventro, Jankowski Import Auto and MDN Express AB through Revenue Pulses. I know how agency work runs: your client, your brand, your deadlines, and no surprises in front of the client.",
+      "I build and maintain WordPress sites for an international agency's clients every day at ABCDMEDIA LTD, and several of the projects on this site came to me through agencies: Doctors Hospital Gujrat and AUJ Wear through Visiventro, Jankowski Import Auto through Revenue Pulses, and MDN Express AB through Roam Growth. I know how agency work runs: your client, your brand, your deadlines, and no surprises in front of the client.",
       "You sell the service at your price and keep the client relationship. I deliver the work, write the reports in your template, and stay invisible. If your client wants a call, I can join as part of your team or brief you beforehand, whichever you prefer.",
     ],
     heroPoints: ["Your brand on every report", "NDA signed before we start", "US and UK working-hour overlap", "Fixed monthly pricing you can mark up"],
